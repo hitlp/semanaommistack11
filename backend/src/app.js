@@ -14,10 +14,12 @@
 const express = require('express');
 const routes = require('./routes');
 const cors = require('cors');
-
 const app = express();
+const { errors } = require('celebrate');
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-app.listen(3333);
+app.use(errors());
+
+module.exports = app;
